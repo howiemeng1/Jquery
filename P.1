@@ -1,0 +1,108 @@
+<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="WebForm5.aspx.vb" Inherits="WebApplication5.WebForm5" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#<%= btnHide.ClientID %>").click(function (e) {
+                e.preventDefault();
+                $(".mytest").hide();
+            });
+        });
+
+
+        $(document).ready(function(){
+            $("#<%= Button1.ClientID%>").click(function (e) {
+                e.preventDefault();
+                $(".QQ").css("color", "red");
+                $("ul li:first").css("background-color", "blue");
+            });
+        });
+
+        $(document).ready(function () {
+            $("#<%=Button2.ClientID%>").dblclick(function (e) {
+                e.preventDefault();
+                $("ul li:last").css("color", "yellow");
+            });
+        });
+
+
+        $(document).ready(function () {
+            $("#<%=Image1.ClientID%>").mouseenter(function () {
+                alert("你滑到我了啦!")
+            });
+        });
+
+        $(document).ready(function () {
+            $("#<%=Image1.ClientID%>").mouseleave(function () {
+                alert("滑出去了!")
+            });
+        });
+
+        $(document).ready(function () {
+            $("#<%=Image2.ClientID%>").mousedown(function () {
+                alert("點到我了!")
+            });
+        });
+
+        $(document).ready(function () {
+            $("#<%=Image2.ClientID%>").mouseup(function () {
+                alert("沒想到放開還有吧!")
+            });
+        });
+
+        $(document).ready(function () {
+            $("li").on("click", function () {   
+                $(this).hide();
+            });
+        });
+
+        $(document).ready(function () {
+            $("p").hover(function () {
+                $(this).css("background-color", "yellow");
+            }, function () {
+                $(this).css("background-color", "lightgray");
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <h1>Jquery練習</h1>
+        <p class="mytest">網頁設計class="mytest"</p>
+        <p class="QQ">123 321 1234567</p>
+        <ul>
+            <li>123</li>
+            <li>456</li>
+            <li>789</li>
+        </ul>
+        點擊<\li>會消失欸
+        <br />
+        <asp:Button ID="btnHide" runat="server" Text="隱藏特定class段落" />
+       <asp:Button ID="Button1" runat="server" Text="變色" />
+        <asp:Button ID="Button2" runat="server" Text="雙擊666" /> 控制項無法用雙擊效果
+
+        <hr/>
+        <br/>
+        <br/>
+        <asp:Image ID="Image1" runat="server" ImageUrl="/images/pooh.jpg" /> 滑到維尼跳出視窗
+        <asp:Image ID="Image2" runat="server" ImageUrl="/images/pooh.jpg" /> 點擊維尼跳出視窗
+        <br/>
+        <br/>
+        <hr />
+        <h2>文章</h2>
+        <p>
+            qwer哈哈，<br />
+            asdf嘿嘿，<br />
+            zxcv嘻嘻。
+        </p>
+    </form>
+
+</body>
+</html>
