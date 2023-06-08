@@ -19,6 +19,15 @@
         padding:60px;
         display:none;
         }
+
+        #animation {
+        background-color:yellow;
+        width :100px;
+        height :100px;
+        position :absolute ;
+        left: 0; 
+        }
+
     </style>
      <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
@@ -61,6 +70,17 @@
         });
 
         $(document).ready(function () {
+            $("#<%=Button4.ClientID%>").click(function (e) {
+                e.preventDefault();
+                $("#div1").fadeTo("fast", 0.8);
+                $("#div2").fadeTo("slow", 0.5);
+                $("#div3").fadeTo("30000", 0.2);
+            });
+        });
+
+
+
+        $(document).ready(function () {
             $("#slide").click(function () {
                 if ($("#board").is(":hidden")) {
                     $("#board").slideDown("slow");
@@ -72,11 +92,10 @@
 
 
         $(document).ready(function () {
-            $("#<%=Button4.ClientID%>").click(function (e) {
+            $("#<%=Button5.ClientID%>").click(function (e) {
                 e.preventDefault();
-                $("#div4").fadeTo("fast",0.8);
-                $("#div5").fadeTo("slow",0.5);
-                $("#div6").fadeTo("30000",0.2);
+                $("#animation").animate({ left: '500px', width: '+=50px', height: '+=50px', opacity: '0.3' });
+
             });
         });
     </script>
@@ -92,7 +111,8 @@
         <h2>淡入 淡出</h2>
          <asp:Button ID="Button1" runat="server" Text="淡入" />
         <asp:Button ID="Button2" runat="server" Text="淡出" />
-        <asp:Button ID="Button3" runat="server" Text="淡出/淡出" /><br />
+        <asp:Button ID="Button3" runat="server" Text="淡出/淡出" />
+        <asp:Button ID="Button4" runat="server" Text="透明" /><br />
         <div id="div1" style="width:50px;height:50px;display:none;background-color:blue"></div><br />
         <div id="div2" style="width:50px;height:50px;display:none;background-color:blue"></div><br />
         <div id="div3" style="width:50px;height:50px;display:none;background-color:blue"></div>
@@ -103,12 +123,19 @@
         <div id="board">他的手可以穿過我的八八，其實用fadeToggle就好了，還寫什麼判別式 可撥</div>
         <hr />
 
-        <h2>透明</h2>
-         <asp:Button ID="Button4" runat="server" Text="透明" />
-        <br />  
-        <div id="div4" style="width:50px;height:50px;background-color:blue"></div><br />
-        <div id="div5" style="width:50px;height:50px;background-color:blue"></div><br />
-        <div id="div6" style="width:50px;height:50px;background-color:blue"></div>
+       <h2>動畫</h2>
+        <asp:Button ID="Button5" runat="server" Text="動畫" />
+        <p>預設css postion屬性需先設為relative、fixed、absolute</p>
+        <div id="animation"></div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         <hr />
     </form>
 </body>
