@@ -1,0 +1,96 @@
+<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="WebForm6.aspx.vb" Inherits="WebApplication5.WebForm6" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <style>
+        .L1 {
+            background-color :red;
+            font-size :22px
+        }
+        .L2 {
+            background-color :green;
+             font-size :22px
+        }
+        .L3 {
+            background-color :blue;
+             font-size :22px
+        }
+    </style>
+    <script >
+        $(document).ready(function () {
+            $("#<%= Button1.ClientID%>").click(function (e) {
+                e.preventDefault();
+                alert( $("#<%= TextBox1.ClientID%>").val());
+            });
+        });
+
+        $(document).ready(function () {
+            $("#<%= Button2.ClientID %>").click(function (e) {
+                e.preventDefault();
+                $("#<%= Label1.ClientID %>").text("皮卡丘");
+            });
+
+            $("#<%= Button3.ClientID %>").click(function (e) {
+                e.preventDefault();
+                $("#QQ").html("<b>水箭龜</b>");
+            });
+
+            $("#<%= Button4.ClientID %>").click(function (e) {
+                e.preventDefault();
+                $("#<%= TextBox2.ClientID %>").val("替換過囉");
+             });
+        });
+
+
+
+        $(document).ready(function () {
+            $("#<%= Button5.ClientID%>").click(function (e) {
+                e.preventDefault();
+                $("#Label2, #Label3, #Label4").removeClass().addClass("L1").css("background-color", "orange").css("font-size", "150%");
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Text="大家好 我是誰 你好嗎 他好嗎 有人在家嗎 哈哈哈哈哈 是在哭喔"> </asp:TextBox>
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="讀出內容" />
+
+
+
+
+        <br />
+     
+        <hr />
+
+
+
+
+        <asp:Label ID="Label1" runat="server" Text="我是第一Row"></asp:Label>
+        <br />
+        <p id="QQ">我在哪</p>
+        我是誰:<asp:TextBox ID="TextBox2" runat="server">原始資料</asp:TextBox>
+        <br />
+        <asp:Button ID="Button2" runat="server" Text="設定text" /><asp:Button ID="Button3" runat="server" Text="設定HTML" /><asp:Button ID="Button4" runat="server" Text="設定Val" />
+        <hr />
+
+        <h2>一次更改很多css及增加css</h2> (label需要先設為靜態屬性 ClientIDMode="Static")
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="小火龍" CssClass="L1" ClientIDMode="Static"></asp:Label>
+        <br />
+        <asp:Label ID="Label3" runat="server" Text="傑尼龜" CssClass="L2" ClientIDMode="Static"></asp:Label>
+        <br />
+        <asp:Label ID="Label4" runat="server" Text="傑尼龜" CssClass="L3" ClientIDMode="Static"></asp:Label>
+        <br />
+        <asp:Button ID="Button5" runat="server" Text="安排" />
+    </form>
+</body>
+</html>
